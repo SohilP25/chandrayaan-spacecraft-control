@@ -15,3 +15,5 @@ class spacecraft {
       this.dir = dir;
     }
 }
+
+module.exports = spacecraft;

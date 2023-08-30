@@ -9,7 +9,7 @@ const spacecraft = require("./navigate");
 describe("Defination and type of spacecraft ", () => {
 
   test("spacecraft is a function", () => {
-    expect(typeof spacecraft).toBe("object");
+    expect(typeof spacecraft).toBe("function");
   });
 
   test("All spacecraft values are undefined at first", () => {
