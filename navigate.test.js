@@ -176,4 +176,73 @@ describe('Turn Up/Down differnt direction and positions test', () => {
     });
 });
 
+/*
+    Test-7
+    ->Use Diffrent Test Cases.
+    ->Test type of variable.
+*/
+describe('Test with Different test-cases', () => {
+    //Test Case 1
+    let commands = ["F","R","U","B","L"];
+    let testspacecraft = new spacecraft(0,0,0,"N");
+    testspacecraft.navigate(commands);
+    let ans = {x:0,y:1,z:-1,dir:"N"};
 
+    test('Formal Test', () => { 
+        expect(testspacecraft).toMatchObject({
+            x: expect.any(Number),
+            y: expect.any(Number),
+            z: expect.any(Number),
+            dir: expect.any(String)
+          });
+     });
+
+     test('Test 1', () => { 
+        expect(testspacecraft).toMatchObject(ans);
+     });
+
+
+
+    //Test Case 2
+     commands = ["D","B","F","L","U"];
+     testspacecraft = new spacecraft(0,1,-1,"E");
+     testspacecraft.navigate(commands);
+      ans = {x:0,y:1,z:-1,dir:"U"};
+
+     test('Test 2', () => { 
+        expect(testspacecraft).toMatchObject(ans);
+     })
+
+
+    //Test Case 3
+    testspacecraft = new spacecraft(4,9,1,"W");
+     testspacecraft.navigate(commands);
+     ans = {x:4,y:9,z:1,dir:"U"};
+
+    test('Test 3', async() => { 
+       expect(testspacecraft).toMatchObject(ans);
+    });
+    
+
+    //Test Case 4
+    commands = ["U","B","B","D","R"];
+    testspacecraft = new spacecraft(2,5,8,"E");
+     testspacecraft.navigate(commands);
+     ans = {x:2,y:5,z:6,dir:"S"};
+
+    test('Test 4', async() => { 
+       expect(testspacecraft).toMatchObject(ans);
+    });
+
+
+    //Test Case 5
+    commands = ["L","F","D","F","L"];
+    testspacecraft = new spacecraft(2,-3,-5,"S");
+     testspacecraft.navigate(commands);
+     ans = {x:3,y:-3,z:-6,dir:"N"};
+
+    test('Test 5', async() => { 
+       expect(testspacecraft).toMatchObject(ans);
+    });
+}
+);
