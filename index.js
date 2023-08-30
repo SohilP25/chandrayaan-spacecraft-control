@@ -38,7 +38,6 @@ input.question(
         input.question("Enter a command (F,B,U,D,L,R) :", function (cmds) {
           cmds = cmds.split(",");
           cmds = cmds.map(cmd => cmd.toUpperCase());
-        //   console.log(cmds);
           if (
             !cmds.every((cmd) => {
               return allcommands.includes(cmd);
@@ -46,7 +45,17 @@ input.question(
           ) {
             console.log("One or multiple commands incorrect");
           }
-          
+          const chandrayaan = new spacecraft(
+            initPos[0],
+            initPos[1],
+            initPos[2],
+            initDir
+          );
+
+          chandrayaan.navigate(cmds);
+            console.log(chandrayaan);
+          console.log(`After navigation position is : ${chandrayaan.x},${chandrayaan.y},${chandrayaan.z}`);
+          console.log(`Direction is : ${chandrayaan.dir}`);
           input.close();
         });
       }
