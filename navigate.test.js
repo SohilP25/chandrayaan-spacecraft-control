@@ -79,7 +79,7 @@ describe('Move Forward/Backward differnt direction and positions test', () => {
     });
 
     // Spacecraft move backward in any direction
-    test('Move backword with differnt direction and positions.', () => { 
+    test('Move backaord with differnt direction and positions.', () => { 
         dummySpacecraftN.move(-1);
         expect(dummySpacecraftN.y).toBe(9);
         dummySpacecraftS.move(-1);
@@ -94,4 +94,45 @@ describe('Move Forward/Backward differnt direction and positions test', () => {
         expect(dummySpacecraftD.z).toBe(61);
     });
 });
+
+/*
+    Test-4
+    ->Spacecraft must be turn left and right.
+    -> value 1 for left & -1 for right.
+    ->Spacecraft turn in any direction
+*/
+describe('Turn Left/Right differnt direction and positions test', () => {
+    // Spacecraft turn left in any direction
+    test('Turn left with differnt direction and positions', () => { 
+        dummySpacecraftN.turn(1);
+        expect(dummySpacecraftN.dir).toBe("W");
+        dummySpacecraftS.turn(1);
+        expect(dummySpacecraftS.dir).toBe("E");
+        dummySpacecraftE.turn(1);
+        expect(dummySpacecraftE.dir).toBe("N");
+        dummySpacecraftW.turn(1);
+        expect(dummySpacecraftW.dir).toBe("S");
+        dummySpacecraftU.turn(1);
+        expect(dummySpacecraftU.dir).toBe("N");
+        dummySpacecraftD.turn(1);
+        expect(dummySpacecraftD.dir).toBe("N");
+    });
+
+    // Spacecraft turn right in any direction
+    test('Turn right with differnt direction and positions ', () => { 
+        dummySpacecraftN.turn(-1);
+        expect(dummySpacecraftN.dir).toBe("N");
+        dummySpacecraftS.turn(-1);
+        expect(dummySpacecraftS.dir).toBe("S");
+        dummySpacecraftE.turn(-1);
+        expect(dummySpacecraftE.dir).toBe("E");
+        dummySpacecraftW.turn(-1);
+        expect(dummySpacecraftW.dir).toBe("W");
+        dummySpacecraftU.turn(-1);
+        expect(dummySpacecraftU.dir).toBe("E");
+        dummySpacecraftD.turn(-1);
+        expect(dummySpacecraftD.dir).toBe("E");
+    });
+});
+
 

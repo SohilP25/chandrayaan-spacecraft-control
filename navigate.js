@@ -13,6 +13,7 @@ class spacecraft {
       this.y = parseInt(y);
       this.z = parseInt(z);
       this.dir = dir;
+    this.allDirection = ["N", "E", "S", "W"];
     }
 
 
@@ -46,6 +47,28 @@ class spacecraft {
             break;
         }
       }
+
+      /*
+    ->turn() : Spacecraft function turn for left(+1) or right(-1)
+    ->turn left/right depends on a value of val which calculated according to directions
+    ->for U : val = 1 for N & val = 1 for S
+    ->for D : val = 1 for S & val = 1 for N
+    ->for N,S,E,W calulated from ordered indexes
+        -1 for next direction & +1 for prev direction
+    */
+      turn(val) {
+        if (this.dir === "U") {
+          this.dir = val === 1 ? "N" : "S";
+        } else if (this.dir === "D") {
+          this.dir = val === -1 ? "S" : "N";
+        } else {
+          let ind = this.allDirection.indexOf(this.dir);
+        //   calculate direction index 
+          ind = (ind + 4 - val) % 4;
+          this.dir = this.allDirection[ind];
+        }
+      }
+    
 }
 
 module.exports = spacecraft;
