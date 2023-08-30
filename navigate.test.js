@@ -20,6 +20,7 @@ describe("Defination and type of spacecraft ", () => {
   });
 });
 
+
 /*
     Test-2
     ->Define spacecraft with different coordinates and all direction.
@@ -54,6 +55,7 @@ describe('All values are initialized properly', () => {
         expect(dummySpacecraftD.z).toBe(61);
      })
 });
+
 
 /*
     Test-3
@@ -95,6 +97,7 @@ describe('Move Forward/Backward differnt direction and positions test', () => {
     });
 });
 
+
 /*
     Test-4
     ->Spacecraft must be turn left and right in any direction.
@@ -135,11 +138,13 @@ describe('Turn Left/Right differnt direction and positions test', () => {
     });
 });
 
+
 /*
     Test-5
     ->Spacecraft must be turn Up and Down.
     ->Spacecraft turn in any direction.
     ->commang in navigate() : U for Up & D for Down
+    ->Also test a navigation function
 */
 describe('Turn Up/Down differnt direction and positions test', () => {
 
@@ -176,8 +181,9 @@ describe('Turn Up/Down differnt direction and positions test', () => {
     });
 });
 
+
 /*
-    Test-7
+    Test-6
     ->Use Diffrent Test Cases.
     ->Test type of variable.
 */

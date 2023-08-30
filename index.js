@@ -23,11 +23,14 @@ input.question(
       input.close();
       return;
     }
+    //Convert it to uppercase
     initDir = initDir.toUpperCase();
 
+    //Take input coordinates of initial position
     input.question(
       "Enter an initial starting position saprating with comma(,) :",
       function (initPos) {
+        //Convert initial coordinates to an array
         initPos = initPos.split(",").map((point) => point.trim());
         if (initPos.length != 3) {
           console.log("Position is invalid");
@@ -35,9 +38,12 @@ input.question(
           return;
         }
 
+        //Take input commands to navigate
         input.question("Enter a command (F,B,U,D,L,R) :", function (cmds) {
+        //Convert initial commands to an array
           cmds = cmds.split(",");
           cmds = cmds.map(cmd => cmd.toUpperCase());
+        // Validate commands.
           if (
             !cmds.every((cmd) => {
               return allcommands.includes(cmd);
@@ -45,6 +51,7 @@ input.question(
           ) {
             console.log("One or multiple commands incorrect");
           }
+          //Create a instance of spacecraft
           const chandrayaan = new spacecraft(
             initPos[0],
             initPos[1],
@@ -52,8 +59,13 @@ input.question(
             initDir
           );
 
+          //execute navigation commands
           chandrayaan.navigate(cmds);
+
+          //print input of spacecraft 
             console.log(chandrayaan);
+
+          //print output of spacecraft 
           console.log(`After navigation position is : ${chandrayaan.x},${chandrayaan.y},${chandrayaan.z}`);
           console.log(`Direction is : ${chandrayaan.dir}`);
           input.close();
