@@ -54,3 +54,44 @@ describe('All values are initialized properly', () => {
         expect(dummySpacecraftD.z).toBe(61);
      })
 });
+
+/*
+    Test-3
+    ->Spacecraft must be move forward and backward.
+    ->Spacecraft move in any direction
+*/
+describe('Move Forward/Backward differnt direction and positions test', () => {
+
+    // Spacecraft move forward in any direction
+    test('Move forward with differnt direction and positions.', () => { 
+        dummySpacecraftN.move(1);
+        expect(dummySpacecraftN.y).toBe(10);
+        dummySpacecraftS.move(1);
+        expect(dummySpacecraftS.y).toBe(4);
+        dummySpacecraftE.move(1);
+        expect(dummySpacecraftE.x).toBe(3);
+        dummySpacecraftW.move(1);
+        expect(dummySpacecraftW.x).toBe(-1);
+        dummySpacecraftU.move(1);
+        expect(dummySpacecraftU.z).toBe(2);
+        dummySpacecraftD.move(1);
+        expect(dummySpacecraftD.z).toBe(60);
+    });
+
+    // Spacecraft move backward in any direction
+    test('Move backword with differnt direction and positions.', () => { 
+        dummySpacecraftN.move(-1);
+        expect(dummySpacecraftN.y).toBe(9);
+        dummySpacecraftS.move(-1);
+        expect(dummySpacecraftS.y).toBe(5);
+        dummySpacecraftE.move(-1);
+        expect(dummySpacecraftE.x).toBe(2);
+        dummySpacecraftW.move(-1);
+        expect(dummySpacecraftW.x).toBe(0);
+        dummySpacecraftU.move(-1);
+        expect(dummySpacecraftU.z).toBe(1);
+        dummySpacecraftD.move(-1);
+        expect(dummySpacecraftD.z).toBe(61);
+    });
+});
+

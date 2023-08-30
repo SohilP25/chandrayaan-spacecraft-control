@@ -14,6 +14,38 @@ class spacecraft {
       this.z = parseInt(z);
       this.dir = dir;
     }
+
+
+    /*
+    ->move() : Spacecraft function move for move forward or move backward
+    ->forward/backward depends on a value of add which calculated according to directions
+    ->for forward : add = 1
+    ->for backward : add = -1
+    */
+    move(add) {
+        switch (this.dir) {
+          case "N":
+            this.y += add;
+            break;
+          case "S":
+            this.y -= add;
+            break;
+          case "U":
+            this.z += add;
+            break;
+          case "D":
+            this.z -= add;
+            break;
+          case "E":
+            this.x += add;
+            break;
+          case "W":
+            this.x -= add; 
+            break;
+          default:
+            break;
+        }
+      }
 }
 
 module.exports = spacecraft;
