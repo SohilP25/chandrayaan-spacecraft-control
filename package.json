@@ -1,0 +1,19 @@
+{
+  "name": "chandrayaan-spacecraft-control",
+  "version": "1.0.0",
+  "description": " A Command-line interface(CLI) to control a spacecraft like chandrayaan 3 or a galactic space craft.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "chandrayaan",
+    "spacecraft",
+    "control"
+  ],
+  "author": "sohil pathan",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.6.4"
+  }
+}
