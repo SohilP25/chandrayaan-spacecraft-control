@@ -97,7 +97,7 @@ describe('Move Forward/Backward differnt direction and positions test', () => {
 
 /*
     Test-4
-    ->Spacecraft must be turn left and right.
+    ->Spacecraft must be turn left and right in any direction.
     -> value 1 for left & -1 for right.
     ->Spacecraft turn in any direction
 */
@@ -132,6 +132,47 @@ describe('Turn Left/Right differnt direction and positions test', () => {
         expect(dummySpacecraftU.dir).toBe("E");
         dummySpacecraftD.turn(-1);
         expect(dummySpacecraftD.dir).toBe("E");
+    });
+});
+
+/*
+    Test-5
+    ->Spacecraft must be turn Up and Down.
+    ->Spacecraft turn in any direction.
+    ->commang in navigate() : U for Up & D for Down
+*/
+describe('Turn Up/Down differnt direction and positions test', () => {
+
+    // Spacecraft turn Up in from direction
+    test('Turn Up with differnt direction and positions', () => { 
+        dummySpacecraftN.navigate(["U"]);
+        expect(dummySpacecraftN.dir).toBe("U");
+        dummySpacecraftS.navigate(["U"]);
+        expect(dummySpacecraftS.dir).toBe("U");
+        dummySpacecraftE.navigate(["U"]);
+        expect(dummySpacecraftE.dir).toBe("U");
+        dummySpacecraftW.navigate(["U"]);
+        expect(dummySpacecraftW.dir).toBe("U");
+        dummySpacecraftU.navigate(["U"]);
+        expect(dummySpacecraftU.dir).toBe("U");
+        dummySpacecraftD.navigate(["U"]);
+        expect(dummySpacecraftD.dir).toBe("U");
+    });
+
+    // Spacecraft turn Down in from direction
+    test('Turn Down with differnt direction and positions', () => { 
+        dummySpacecraftN.navigate(["D"]);
+        expect(dummySpacecraftN.dir).toBe("D");
+        dummySpacecraftS.navigate(["D"]);
+        expect(dummySpacecraftS.dir).toBe("D");
+        dummySpacecraftE.navigate(["D"]);
+        expect(dummySpacecraftE.dir).toBe("D");
+        dummySpacecraftW.navigate(["D"]);
+        expect(dummySpacecraftW.dir).toBe("D");
+        dummySpacecraftU.navigate(["D"]);
+        expect(dummySpacecraftU.dir).toBe("D");
+        dummySpacecraftD.navigate(["D"]);
+        expect(dummySpacecraftD.dir).toBe("D");
     });
 });
 

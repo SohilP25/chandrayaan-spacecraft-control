@@ -68,6 +68,41 @@ class spacecraft {
           this.dir = this.allDirection[ind];
         }
       }
+
+      /*
+    ->navigate(array) : Spacecraft function navigate from commands in array
+    ->Spacecraft have navigate according to command which provides in commands array.
+    ->F = Move Forward & B = Move Backward
+    ->U = Rotate Upward & D = Rotate Downward
+    ->L = Rotate to the left side & R = Rotate to the right side
+    */
+      navigate(commands) {
+        commands.forEach((command) => {
+        // console.log(`dir is ${this.dir}, and (${this.x},${this.y},${this.z})`);
+          switch (command) {
+            case "F":
+              this.move(1);
+              break;
+            case "B":
+              this.move(-1);
+              break;
+            case "U":
+              this.dir = "U";
+              break;
+            case "D":
+              this.dir = "D";
+              break;
+            case "L":
+              this.turn(1);
+              break;
+            case "R":
+              this.turn(-1);
+              break;
+            default:
+              console.log(`Invalid command: ${command}`);
+          }
+        });
+      }
     
 }
 
