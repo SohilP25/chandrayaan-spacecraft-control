@@ -7,19 +7,42 @@ const spacecraft = require("./navigate");
     ->Define a spacecraft with initial values and check for undefined(falsy) values.
 */
 describe("Defination and type of spacecraft ", () => {
+ 
+    const tempSpacecraft = new spacecraft;
 
-  test("spacecraft is a function", () => {
-    expect(typeof spacecraft).toBe("function");
-  });
+  test("Check for objetc(Instance of class)",()=>{
+    expect(tempSpacecraft).toBeInstanceOf(spacecraft);
+  })
 
   test("All spacecraft values are undefined at first", () => {
-    expect(spacecraft.x).toBeFalsy();
-    expect(spacecraft.y).toBeFalsy();
-    expect(spacecraft.z).toBeFalsy();
-    expect(spacecraft.dir).toBeFalsy();
+    expect(tempSpacecraft.x).toBeFalsy();
+    expect(tempSpacecraft.y).toBeFalsy();
+    expect(tempSpacecraft.z).toBeFalsy();
+    expect(tempSpacecraft.dir).toBeFalsy();
   });
 });
+ 
+//Creating function that initialize a spacecraft and navigate through given commands
+function initializeAndNavigate(x, y, z, dir, cmd) {
+  const testSpacecraft = new spacecraft(x, y, z, dir);
+  testSpacecraft.navigate(cmd);
+  return testSpacecraft;
+}
 
+ 
+function validateCoordinatesAndDirection(testSpacecraft, x, y, z, dir) {
+  expect(testSpacecraft.x).toBe(x);
+  expect(testSpacecraft.y).toBe(y);
+  expect(testSpacecraft.z).toBe(z);
+  expect(testSpacecraft.dir).toBe(dir);
+}
+
+const dummySpacecraftN = new spacecraft(4, 9, 1, "N");
+const dummySpacecraftS = new spacecraft(2, 5, 1, "S");
+const dummySpacecraftE = new spacecraft(2, 6, 1, "E");
+const dummySpacecraftW = new spacecraft(0, 22, 1, "W");
+const dummySpacecraftU = new spacecraft(31, 32, 1, "U");
+const dummySpacecraftD = new spacecraft(0, 13, 61, "D");
 
 /*
     Test-2
@@ -27,76 +50,107 @@ describe("Defination and type of spacecraft ", () => {
     ->Test all initial coordinates and values.
 */
 //Create a dummy spacecrafts that contain a all directions and diffrent coordinates.
-const dummySpacecraftN = new spacecraft(4,9,1,"N");
-const dummySpacecraftS = new spacecraft(2,5,1,"S");
-const dummySpacecraftE = new spacecraft(2,6,1,"E");
-const dummySpacecraftW = new spacecraft(0,22,1,"W");
-const dummySpacecraftU = new spacecraft(31,32,1,"U");
-const dummySpacecraftD = new spacecraft(0,13,61,"D");
 
-describe('All values are initialized properly', () => {
-    //Check for all directon.
-    test('Initialize with all direction', () => { 
-         expect(dummySpacecraftN.dir).toBe("N");
-         expect(dummySpacecraftS.dir).toBe("S");
-         expect(dummySpacecraftE.dir).toBe("E");
-         expect(dummySpacecraftW.dir).toBe("W");
-         expect(dummySpacecraftU.dir).toBe("U");
-         expect(dummySpacecraftD.dir).toBe("D");
-        })
+describe("All coordinates are initialize with all possible direction", () => {
+  //Check for all directon.
+  test("Initialize with N direction", () => {
+    //  expect(dummySpacecraftN.dir).toBe("N");
+    const testSpacecraft = initializeAndNavigate(4, 9, 1, "N");
+    validateCoordinatesAndDirection(testSpacecraft, 4, 9, 1, "N");
+  });
 
-    //Check for different coordinates.
-    test('Intialize with differrnt positions', () => { 
-        expect(dummySpacecraftN.x).toBe(4);
-        expect(dummySpacecraftN.y).toBe(9);
-        expect(dummySpacecraftN.z).toBe(1);
-        expect(dummySpacecraftU.x).toBe(31);
-        expect(dummySpacecraftW.y).toBe(22);
-        expect(dummySpacecraftD.z).toBe(61);
-     })
+  test("Initialize with S direction", () => {
+    const testSpacecraft = initializeAndNavigate(2, 5, 1, "S");
+    validateCoordinatesAndDirection(testSpacecraft, 2, 5, 1, "S");
+  });
+
+  test("Initialize with E direction", () => {
+    const testSpacecraft = initializeAndNavigate(2, 6, 1, "E");
+    validateCoordinatesAndDirection(testSpacecraft, 2, 6, 1, "E");
+  });
+
+  test("Initialize with W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 22, 1, "W");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 22, 1, "W");
+  });
+
+  test("Initialize with U direction", () => {
+    const testSpacecraft = initializeAndNavigate(31, 32, 1, "U");
+    validateCoordinatesAndDirection(testSpacecraft, 31, 32, 1, "U");
+  });
+
+  test("Initialize with D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 13, 61, "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 13, 61, "D");
+  });
 });
-
 
 /*
     Test-3
     ->Spacecraft must be move forward and backward.
     ->Spacecraft move in any direction
 */
-describe('Move Forward/Backward differnt direction and positions test', () => {
+describe("Move Forward/Backward differnt direction and positions test", () => {
+  //In North direction
+  test("Move forward in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "F");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 1, 0, "N");
+  });
+  test("Move backward in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "B");
+    validateCoordinatesAndDirection(testSpacecraft, 0, -1, 0, "N");
+  });
 
-    // Spacecraft move forward in any direction
-    test('Move forward with differnt direction and positions.', () => { 
-        dummySpacecraftN.move(1);
-        expect(dummySpacecraftN.y).toBe(10);
-        dummySpacecraftS.move(1);
-        expect(dummySpacecraftS.y).toBe(4);
-        dummySpacecraftE.move(1);
-        expect(dummySpacecraftE.x).toBe(3);
-        dummySpacecraftW.move(1);
-        expect(dummySpacecraftW.x).toBe(-1);
-        dummySpacecraftU.move(1);
-        expect(dummySpacecraftU.z).toBe(2);
-        dummySpacecraftD.move(1);
-        expect(dummySpacecraftD.z).toBe(60);
-    });
+  //In South direction
+  test("Move forward in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "F");
+    validateCoordinatesAndDirection(testSpacecraft, 0, -1, 0, "S");
+  });
+  test("Move backward in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "B");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 1, 0, "S");
+  });
 
-    // Spacecraft move backward in any direction
-    test('Move backaord with differnt direction and positions.', () => { 
-        dummySpacecraftN.move(-1);
-        expect(dummySpacecraftN.y).toBe(9);
-        dummySpacecraftS.move(-1);
-        expect(dummySpacecraftS.y).toBe(5);
-        dummySpacecraftE.move(-1);
-        expect(dummySpacecraftE.x).toBe(2);
-        dummySpacecraftW.move(-1);
-        expect(dummySpacecraftW.x).toBe(0);
-        dummySpacecraftU.move(-1);
-        expect(dummySpacecraftU.z).toBe(1);
-        dummySpacecraftD.move(-1);
-        expect(dummySpacecraftD.z).toBe(61);
-    });
+  //In East direction/
+  test("Move forward in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "F");
+    validateCoordinatesAndDirection(testSpacecraft, 1, 0, 0, "E");
+  });
+  test("Move backward in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "B");
+    validateCoordinatesAndDirection(testSpacecraft, -1, 0, 0, "E");
+  });
+
+  //  In West direction
+  test("Move forward in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "F");
+    validateCoordinatesAndDirection(testSpacecraft, -1, 0, 0, "W");
+  });
+  test("Move backward in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "B");
+    validateCoordinatesAndDirection(testSpacecraft, 1, 0, 0, "W");
+  });
+
+  //In Up direction
+  test("Move forward in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "F");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 1, "U");
+  });
+  test("Move backward in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "B");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, -1, "U");
+  });
+
+  //In Down direction
+  test("Move forward in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "F");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, -1, "D");
+  });
+  test("Move backward in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "B");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 1, "D");
+  });
 });
-
 
 /*
     Test-4
@@ -104,40 +158,68 @@ describe('Move Forward/Backward differnt direction and positions test', () => {
     -> value 1 for left & -1 for right.
     ->Spacecraft turn in any direction
 */
-describe('Turn Left/Right differnt direction and positions test', () => {
-    // Spacecraft turn left in any direction
-    test('Turn left with differnt direction and positions', () => { 
-        dummySpacecraftN.turn(1);
-        expect(dummySpacecraftN.dir).toBe("W");
-        dummySpacecraftS.turn(1);
-        expect(dummySpacecraftS.dir).toBe("E");
-        dummySpacecraftE.turn(1);
-        expect(dummySpacecraftE.dir).toBe("N");
-        dummySpacecraftW.turn(1);
-        expect(dummySpacecraftW.dir).toBe("S");
-        dummySpacecraftU.turn(1);
-        expect(dummySpacecraftU.dir).toBe("N");
-        dummySpacecraftD.turn(1);
-        expect(dummySpacecraftD.dir).toBe("N");
-    });
+describe("Turn Left/Right differnt direction and positions test", () => {
+  //In North direction
+  test("Turn Left in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "W");
+  });
+  test("Turn Right in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "E");
+  });
 
-    // Spacecraft turn right in any direction
-    test('Turn right with differnt direction and positions ', () => { 
-        dummySpacecraftN.turn(-1);
-        expect(dummySpacecraftN.dir).toBe("N");
-        dummySpacecraftS.turn(-1);
-        expect(dummySpacecraftS.dir).toBe("S");
-        dummySpacecraftE.turn(-1);
-        expect(dummySpacecraftE.dir).toBe("E");
-        dummySpacecraftW.turn(-1);
-        expect(dummySpacecraftW.dir).toBe("W");
-        dummySpacecraftU.turn(-1);
-        expect(dummySpacecraftU.dir).toBe("E");
-        dummySpacecraftD.turn(-1);
-        expect(dummySpacecraftD.dir).toBe("E");
-    });
+  //In South direction
+  test("Turn Left in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "E");
+  });
+  test("Turn Right in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "W");
+  });
+
+  //In East direction/
+  test("Turn Left in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
+  test("Turn Right in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
+
+  //  In West direction
+  test("Turn Left in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
+  test("Turn Right in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
+
+  //In Up direction
+  test("Turn Left in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
+  test("Turn Right in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
+
+  //In Down direction
+  test("Turn Left in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
+
+  test("Turn Right in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
 });
-
 
 /*
     Test-5
@@ -146,109 +228,112 @@ describe('Turn Left/Right differnt direction and positions test', () => {
     ->commang in navigate() : U for Up & D for Down
     ->Also test a navigation function
 */
-describe('Turn Up/Down differnt direction and positions test', () => {
+describe("Turn Up/Down differnt direction and positions test", () => {
+  //In North direction
+  test("Turn Up in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 
-    // Spacecraft turn Up in from direction
-    test('Turn Up with differnt direction and positions', () => { 
-        dummySpacecraftN.navigate(["U"]);
-        expect(dummySpacecraftN.dir).toBe("U");
-        dummySpacecraftS.navigate(["U"]);
-        expect(dummySpacecraftS.dir).toBe("U");
-        dummySpacecraftE.navigate(["U"]);
-        expect(dummySpacecraftE.dir).toBe("U");
-        dummySpacecraftW.navigate(["U"]);
-        expect(dummySpacecraftW.dir).toBe("U");
-        dummySpacecraftU.navigate(["U"]);
-        expect(dummySpacecraftU.dir).toBe("U");
-        dummySpacecraftD.navigate(["U"]);
-        expect(dummySpacecraftD.dir).toBe("U");
-    });
+  //In South direction
+  test("Turn Up in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 
-    // Spacecraft turn Down in from direction
-    test('Turn Down with differnt direction and positions', () => { 
-        dummySpacecraftN.navigate(["D"]);
-        expect(dummySpacecraftN.dir).toBe("D");
-        dummySpacecraftS.navigate(["D"]);
-        expect(dummySpacecraftS.dir).toBe("D");
-        dummySpacecraftE.navigate(["D"]);
-        expect(dummySpacecraftE.dir).toBe("D");
-        dummySpacecraftW.navigate(["D"]);
-        expect(dummySpacecraftW.dir).toBe("D");
-        dummySpacecraftU.navigate(["D"]);
-        expect(dummySpacecraftU.dir).toBe("D");
-        dummySpacecraftD.navigate(["D"]);
-        expect(dummySpacecraftD.dir).toBe("D");
-    });
+  //In East direction/
+  test("Turn Up in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
+
+  //  In West direction
+  test("Turn Up in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
+
+  //In Up direction
+  test("Turn Up in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
+
+  //In Down direction
+  test("Turn Up in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+
+  test("Turn Down in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 });
-
 
 /*
     Test-6
     ->Use Diffrent Test Cases.
     ->Test type of variable.
 */
-describe('Test with Different test-cases', () => {
-    //Test Case 1
-    let commands = ["F","R","U","B","L"];
-    let testspacecraft = new spacecraft(0,0,0,"N");
-    testspacecraft.navigate(commands);
-    let ans = {x:0,y:1,z:-1,dir:"N"};
+describe("Test with Different test-cases", () => {
+  //Test Case 1
+  test("Test case 1", () => {
+    const commands = ["F", "R", "U", "B", "L"];
+    const testSpacecraft = new spacecraft(0, 0, 0, "N");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 0, 1, -1, "N");
+  });
 
-    test('Formal Test', () => { 
-        expect(testspacecraft).toMatchObject({
-            x: expect.any(Number),
-            y: expect.any(Number),
-            z: expect.any(Number),
-            dir: expect.any(String)
-          });
-     });
+  //Test Case 2
+  test("Test case 2", () => {
+    const commands = ["D", "B", "F", "L", "U"];
+    const testSpacecraft = new spacecraft(0, 1, -1, "E");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 0, 1, -1, "U");
+  });
 
-     test('Test 1', () => { 
-        expect(testspacecraft).toMatchObject(ans);
-     });
+  //Test Case 3
+  test("Test case 3", () => {
+    const commands = ["D", "B", "F", "L", "U"];
+    const testSpacecraft = new spacecraft(4, 9, 1, "W");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 4, 9, 1, "U");
+  });
 
+  //Test Case 4
+  test("Test case 4", () => {
+    const commands = ["U", "B", "B", "D", "R"];
+    const testSpacecraft = new spacecraft(2, 5, 8, "E");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 2, 5, 6, "N");
+  });
 
-
-    //Test Case 2
-     commands = ["D","B","F","L","U"];
-     testspacecraft = new spacecraft(0,1,-1,"E");
-     testspacecraft.navigate(commands);
-      ans = {x:0,y:1,z:-1,dir:"U"};
-
-     test('Test 2', () => { 
-        expect(testspacecraft).toMatchObject(ans);
-     })
-
-
-    //Test Case 3
-    testspacecraft = new spacecraft(4,9,1,"W");
-     testspacecraft.navigate(commands);
-     ans = {x:4,y:9,z:1,dir:"U"};
-
-    test('Test 3', async() => { 
-       expect(testspacecraft).toMatchObject(ans);
-    });
-    
-
-    //Test Case 4
-    commands = ["U","B","B","D","R"];
-    testspacecraft = new spacecraft(2,5,8,"E");
-     testspacecraft.navigate(commands);
-     ans = {x:2,y:5,z:6,dir:"S"};
-
-    test('Test 4', async() => { 
-       expect(testspacecraft).toMatchObject(ans);
-    });
-
-
-    //Test Case 5
-    commands = ["L","F","D","F","L"];
-    testspacecraft = new spacecraft(2,-3,-5,"S");
-     testspacecraft.navigate(commands);
-     ans = {x:3,y:-3,z:-6,dir:"N"};
-
-    test('Test 5', async() => { 
-       expect(testspacecraft).toMatchObject(ans);
-    });
-}
-);
+  //Test Case 5
+  test("Test case 4", () => {
+    const commands = ["L", "F", "D", "F", "L"];
+    const testSpacecraft = new spacecraft(2, -3, -5, "S");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 3, -3, -6, "S");
+  });
+});

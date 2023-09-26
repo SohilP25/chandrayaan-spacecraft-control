@@ -60,7 +60,7 @@ input.question(
           );
 
           //execute navigation commands
-          chandrayaan.navigate(cmds);
+          commands.forEach((command) => chandrayaan.navigate(command));
 
           //print input of spacecraft 
             console.log(chandrayaan);

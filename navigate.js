@@ -13,7 +13,7 @@ class spacecraft {
       this.y = parseInt(y);
       this.z = parseInt(z);
       this.dir = dir;
-    this.allDirection = ["N", "E", "S", "W"];
+      this.allDirection = ["N", "E", "S", "W"];
     }
 
 
@@ -60,7 +60,7 @@ class spacecraft {
         if (this.dir === "U") {
           this.dir = val === 1 ? "N" : "S";
         } else if (this.dir === "D") {
-          this.dir = val === -1 ? "S" : "N";
+          this.dir = val === 1 ? "S" : "N";
         } else {
           let ind = this.allDirection.indexOf(this.dir);
         //   calculate direction index 
@@ -76,8 +76,7 @@ class spacecraft {
     ->U = Rotate Upward & D = Rotate Downward
     ->L = Rotate to the left side & R = Rotate to the right side
     */
-      navigate(commands) {
-        commands.forEach((command) => {
+      navigate(command) {
         // console.log(`dir is ${this.dir}, and (${this.x},${this.y},${this.z})`);
           switch (command) {
             case "F":
@@ -101,8 +100,7 @@ class spacecraft {
             default:
               console.log(`Invalid command: ${command}`);
           }
-        });
-      }
+      };
     
 }
 
