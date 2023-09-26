@@ -35,14 +35,7 @@ function validateCoordinatesAndDirection(testSpacecraft, x, y, z, dir) {
   expect(testSpacecraft.y).toBe(y);
   expect(testSpacecraft.z).toBe(z);
   expect(testSpacecraft.dir).toBe(dir);
-}
-
-const dummySpacecraftN = new spacecraft(4, 9, 1, "N");
-const dummySpacecraftS = new spacecraft(2, 5, 1, "S");
-const dummySpacecraftE = new spacecraft(2, 6, 1, "E");
-const dummySpacecraftW = new spacecraft(0, 22, 1, "W");
-const dummySpacecraftU = new spacecraft(31, 32, 1, "U");
-const dummySpacecraftD = new spacecraft(0, 13, 61, "D");
+} 
 
 /*
     Test-2
