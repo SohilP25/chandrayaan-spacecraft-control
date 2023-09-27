@@ -17,14 +17,14 @@ class Spacecraft {
     this.y = y;
     this.z = z;
     this.dir = dir;
-    // this.checkBoundary();
+    this.checkBoundary();
   }
 
-  // private checkBoundary(): void {
-  //   if (this.x > 10 || this.x < -10 || this.y > 10 || this.y < -10 || this.z > 10 || this.z < -10) {
-  //     throw new Error("Boundary Error");
-  //   }
-  // }
+  private checkBoundary(): void {
+    if (this.x > 10 || this.x < -10 || this.y > 10 || this.y < -10 || this.z > 10 || this.z < -10) {
+      throw new Error("Boundary Error");
+    }
+  }
 
   /*
    * move(): Spacecraft function to move forward or backward.
@@ -104,7 +104,7 @@ class Spacecraft {
       default:
         console.log(`Invalid command: ${command}`);
     }
-    // this.checkBoundary();
+    this.checkBoundary();
   }
 }
 
