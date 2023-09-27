@@ -63,17 +63,17 @@ class Spacecraft {
    * For D: val = 1 for S & val = 1 for N.
    * For N, S, E, W calculated from ordered indexes: -1 for the next direction & +1 for the previous direction.
    */
-  // private turn(val: number): void {
-  //   if (this.dir === "U") {
-  //     this.dir = val === 1 ? "N" : "S";
-  //   } else if (this.dir === "D") {
-  //     this.dir = val === 1 ? "S" : "N";
-  //   } else {
-  //     let ind = this.allDirection.indexOf(this.dir);
-  //     ind = (ind + 4 - val) % 4;
-  //     this.dir = this.allDirection[ind];
-  //   }
-  // }
+  private turn(val: number): void {
+    if (this.dir === "U") {
+      this.dir = val === 1 ? "N" : "S";
+    } else if (this.dir === "D") {
+      this.dir = val === 1 ? "S" : "N";
+    } else {
+      let ind = this.allDirection.indexOf(this.dir);
+      ind = (ind + 4 - val) % 4;
+      this.dir = this.allDirection[ind];
+    }
+  }
 
   /*
    * navigate(array): Spacecraft function to navigate from commands in an array.
