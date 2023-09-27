@@ -13,8 +13,14 @@ class spacecraft {
       this.y = parseInt(y);
       this.z = parseInt(z);
       this.dir = dir;
+      this.checkBoundary();
     }
     allDirection = ["N", "E", "S", "W"];
+    checkBoundary(){
+      if(this.x > 10 || this.x < -10 || this.y > 10 || this.y < -10 || this.z > 10 || this.z < -10){
+        throw new Error("Boundary Error");
+      }
+    }
     /*
     ->move() : Spacecraft function move for move forward or move backward
     ->forward/backward depends on a value of add which calculated according to directions
@@ -97,6 +103,7 @@ class spacecraft {
             default:
               console.log(`Invalid command: ${command}`);
           }
+          this.checkBoundary();
       };
     
 }
