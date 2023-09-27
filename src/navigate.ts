@@ -21,7 +21,14 @@ class Spacecraft {
   }
 
   private checkBoundary(): void {
-    if (this.x > 10 || this.x < -10 || this.y > 10 || this.y < -10 || this.z > 10 || this.z < -10) {
+    if (
+      this.x > 10 ||
+      this.x < -10 ||
+      this.y > 10 ||
+      this.y < -10 ||
+      this.z > 10 ||
+      this.z < -10
+    ) {
       throw new Error("Boundary Error");
     }
   }
