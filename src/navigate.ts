@@ -17,52 +17,52 @@ class Spacecraft {
     this.y = y;
     this.z = z;
     this.dir = dir;
-    // this.checkBoundary();
+    this.checkBoundary();
   }
 
-  // private checkBoundary(): void {
-  //   if (this.x > 10 || this.x < -10 || this.y > 10 || this.y < -10 || this.z > 10 || this.z < -10) {
-  //     throw new Error("Boundary Error");
-  //   }
-  // }
+  private checkBoundary(): void {
+    if (this.x > 10 || this.x < -10 || this.y > 10 || this.y < -10 || this.z > 10 || this.z < -10) {
+      throw new Error("Boundary Error");
+    }
+  }
 
   /*
    * move(): Spacecraft function to move forward or backward.
    * Forward/backward depends on the value of 'add,' which is calculated according to directions.
    * For forward: add = 1, for backward: add = -1.
    */
-  // private move(add: number): void {
-  //   switch (this.dir) {
-  //     case "N":
-  //       this.y += add;
-  //       break;
-  //     case "S":
-  //       this.y -= add;
-  //       break;
-  //     case "U":
-  //       this.z += add;
-  //       break;
-  //     case "D":
-  //       this.z -= add;
-  //       break;
-  //     case "E":
-  //       this.x += add;
-  //       break;
-  //     case "W":
-  //       this.x -= add;
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
+  private move(add: number): void {
+    switch (this.dir) {
+      case "N":
+        this.y += add;
+        break;
+      case "S":
+        this.y -= add;
+        break;
+      case "U":
+        this.z += add;
+        break;
+      case "D":
+        this.z -= add;
+        break;
+      case "E":
+        this.x += add;
+        break;
+      case "W":
+        this.x -= add;
+        break;
+      default:
+        break;
+    }
+  }
 
-  // /*
-  //  * turn(): Spacecraft function to turn left (+1) or right (-1).
-  //  * Turn left/right depends on the value of 'val,' which is calculated according to directions.
-  //  * For U: val = 1 for N & val = 1 for S.
-  //  * For D: val = 1 for S & val = 1 for N.
-  //  * For N, S, E, W calculated from ordered indexes: -1 for the next direction & +1 for the previous direction.
-  //  */
+  /*
+   * turn(): Spacecraft function to turn left (+1) or right (-1).
+   * Turn left/right depends on the value of 'val,' which is calculated according to directions.
+   * For U: val = 1 for N & val = 1 for S.
+   * For D: val = 1 for S & val = 1 for N.
+   * For N, S, E, W calculated from ordered indexes: -1 for the next direction & +1 for the previous direction.
+   */
   // private turn(val: number): void {
   //   if (this.dir === "U") {
   //     this.dir = val === 1 ? "N" : "S";
@@ -75,37 +75,37 @@ class Spacecraft {
   //   }
   // }
 
-  // /*
-  //  * navigate(array): Spacecraft function to navigate from commands in an array.
-  //  * The spacecraft navigates according to commands provided in the commands array.
-  //  * F = Move Forward, B = Move Backward, U = Rotate Upward, D = Rotate Downward,
-  //  * L = Rotate to the left side, R = Rotate to the right side.
-  //  */
-  // navigate(command: string): void {
-  //   switch (command) {
-  //     case "F":
-  //       this.move(1);
-  //       break;
-  //     case "B":
-  //       this.move(-1);
-  //       break;
-  //     case "U":
-  //       this.dir = "U";
-  //       break;
-  //     case "D":
-  //       this.dir = "D";
-  //       break;
-  //     case "L":
-  //       this.turn(1);
-  //       break;
-  //     case "R":
-  //       this.turn(-1);
-  //       break;
-  //     default:
-  //       console.log(`Invalid command: ${command}`);
-  //   }
-  //   this.checkBoundary();
-  // }
+  /*
+   * navigate(array): Spacecraft function to navigate from commands in an array.
+   * The spacecraft navigates according to commands provided in the commands array.
+   * F = Move Forward, B = Move Backward, U = Rotate Upward, D = Rotate Downward,
+   * L = Rotate to the left side, R = Rotate to the right side.
+   */
+  navigate(command: string): void {
+    switch (command) {
+      case "F":
+        this.move(1);
+        break;
+      case "B":
+        this.move(-1);
+        break;
+      case "U":
+        this.dir = "U";
+        break;
+      case "D":
+        this.dir = "D";
+        break;
+      case "L":
+        this.turn(1);
+        break;
+      case "R":
+        this.turn(-1);
+        break;
+      default:
+        console.log(`Invalid command: ${command}`);
+    }
+    this.checkBoundary();
+  }
 }
 
 export default Spacecraft;
