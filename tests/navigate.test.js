@@ -1,5 +1,5 @@
 // import necessary modules and packages
-const spacecraft = require("./navigate");
+const spacecraft = require("../src/navigate");
 
 /*
     Test-1 
@@ -363,11 +363,10 @@ describe("Boundary value check", () => {
   });
 
   test("Spacecraft must be navigates in boundary", () => {
-      const commands = ["F","F", "R", "U", "B", "L"];
-      const testSpacecraft = new spacecraft(2, 9, 3, "N");
+    const commands = ["F", "F", "R", "U", "B", "L"];
+    const testSpacecraft = new spacecraft(2, 9, 3, "N");
     expect(() =>
-    commands.forEach((command) => testSpacecraft.navigate(command))
+      commands.forEach((command) => testSpacecraft.navigate(command))
     ).toThrow("Boundary Error");
   });
-  
 });

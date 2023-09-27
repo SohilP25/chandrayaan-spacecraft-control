@@ -1,6 +1,6 @@
 // Import package for I/O from CLI.
 const readline = require("readline");
-const spacecraft = require('./navigate');
+const spacecraft = require("./navigate");
 
 // Create a interface for I/O.
 const input = readline.createInterface({
@@ -40,10 +40,10 @@ input.question(
 
         //Take input commands to navigate
         input.question("Enter a command (F,B,U,D,L,R) :", function (cmds) {
-        //Convert initial commands to an array
+          //Convert initial commands to an array
           cmds = cmds.split(",");
-          cmds = cmds.map(cmd => cmd.toUpperCase());
-        // Validate commands.
+          cmds = cmds.map((cmd) => cmd.toUpperCase());
+          // Validate commands.
           if (
             !cmds.every((cmd) => {
               return allcommands.includes(cmd);
@@ -62,11 +62,13 @@ input.question(
           //execute navigation commands
           commands.forEach((command) => chandrayaan.navigate(command));
 
-          //print input of spacecraft 
-            console.log(chandrayaan);
+          //print input of spacecraft
+          console.log(chandrayaan);
 
-          //print output of spacecraft 
-          console.log(`After navigation position is : ${chandrayaan.x},${chandrayaan.y},${chandrayaan.z}`);
+          //print output of spacecraft
+          console.log(
+            `After navigation position is : ${chandrayaan.x},${chandrayaan.y},${chandrayaan.z}`
+          );
           console.log(`Direction is : ${chandrayaan.dir}`);
           input.close();
         });
