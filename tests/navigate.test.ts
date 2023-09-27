@@ -329,44 +329,44 @@ describe("Test with Different test-cases", () => {
   });
 });
 
-// // Test 7 for bounding values
-// describe("Boundary value check", () => {
-//   test("Spacecraft must be in boundary", () => {
-//     expect(() => new spacecraft(11, 2, 1, "N")).toThrow("Boundary Error");
-//   });
+// Test 7 for bounding values
+describe("Boundary value check", () => {
+  test("Spacecraft must be in boundary", () => {
+    expect(() => new spacecraft(11, 2, 1, "N")).toThrow("Boundary Error");
+  });
 
-//   test("Spacecraft must be navigates in boundary", () => {
-//     expect(() => initializeAndNavigate(10, 1, 3, "E", "F")).toThrow(
-//       "Boundary Error"
-//     );
-//   });
+  test("Spacecraft must be navigates in boundary", () => {
+    expect(() => initializeAndNavigate(10, 1, 3, "E", "F")).toThrow(
+      "Boundary Error"
+    );
+  });
 
-//   test("Spacecraft must be navigates in boundary", () => {
-//     expect(() => initializeAndNavigate(7, -10, 8, "N", "B")).toThrow(
-//       "Boundary Error"
-//     );
-//   });
+  test("Spacecraft must be navigates in boundary", () => {
+    expect(() => initializeAndNavigate(7, -10, 8, "N", "B")).toThrow(
+      "Boundary Error"
+    );
+  });
 
-//   test("Spacecraft must be navigates in boundary", () => {
-//     expect(() => initializeAndNavigate(-10, 10, 10, "E", "B")).toThrow(
-//       "Boundary Error"
-//     );
-//   });
+  test("Spacecraft must be navigates in boundary", () => {
+    expect(() => initializeAndNavigate(-10, 10, 10, "E", "B")).toThrow(
+      "Boundary Error"
+    );
+  });
 
-//   test("Spacecraft must be navigates in boundary", () => {
-//     const commands = ["L", "F", "D", "F", "L"];
-//     const testSpacecraft = new spacecraft(2, -3, -10, "S");
+  test("Spacecraft must be navigates in boundary", () => {
+    const commands = ["L", "F", "D", "F", "L"];
+    const testSpacecraft = new spacecraft(2, -3, -10, "S");
 
-//     expect(() =>
-//       commands.forEach((command) => testSpacecraft.navigate(command))
-//     ).toThrow("Boundary Error");
-//   });
+    expect(() =>
+      commands.forEach((command) => testSpacecraft.navigate(command))
+    ).toThrow("Boundary Error");
+  });
 
-//   test("Spacecraft must be navigates in boundary", () => {
-//     const commands = ["F", "F", "R", "U", "B", "L"];
-//     const testSpacecraft = new spacecraft(2, 9, 3, "N");
-//     expect(() =>
-//       commands.forEach((command) => testSpacecraft.navigate(command))
-//     ).toThrow("Boundary Error");
-//   });
-// });
+  test("Spacecraft must be navigates in boundary", () => {
+    const commands = ["F", "F", "R", "U", "B", "L"];
+    const testSpacecraft = new spacecraft(2, 9, 3, "N");
+    expect(() =>
+      commands.forEach((command) => testSpacecraft.navigate(command))
+    ).toThrow("Boundary Error");
+  });
+});
