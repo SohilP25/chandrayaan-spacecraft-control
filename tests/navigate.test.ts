@@ -282,52 +282,52 @@ describe("Turn Up/Down differnt direction and positions test", () => {
   });
 });
 
-// /*
-//     Test-6
-//     ->Use Diffrent Test Cases.
-//     ->Test type of variable.
-// */
-// describe("Test with Different test-cases", () => {
-//   //Test Case 1
-//   test("Test case 1", () => {
-//     const commands = ["F", "R", "U", "B", "L"];
-//     const testSpacecraft = new spacecraft(0, 0, 0, "N");
-//     commands.forEach((command) => testSpacecraft.navigate(command));
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 1, -1, "N");
-//   });
+/*
+    Test-6
+    ->Use Diffrent Test Cases.
+    ->Test type of variable.
+*/
+describe("Test with Different test-cases", () => {
+  //Test Case 1
+  test("Test case 1", () => {
+    const commands = ["F", "R", "U", "B", "L"];
+    const testSpacecraft = new spacecraft(0, 0, 0, "N");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 0, 1, -1, "N");
+  });
 
-//   //Test Case 2
-//   test("Test case 2", () => {
-//     const commands = ["D", "B", "F", "L", "U"];
-//     const testSpacecraft = new spacecraft(0, 1, -1, "E");
-//     commands.forEach((command) => testSpacecraft.navigate(command));
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 1, -1, "U");
-//   });
+  //Test Case 2
+  test("Test case 2", () => {
+    const commands = ["D", "B", "F", "L", "U"];
+    const testSpacecraft = new spacecraft(0, 1, -1, "E");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 0, 1, -1, "U");
+  });
 
-//   //Test Case 3
-//   test("Test case 3", () => {
-//     const commands = ["D", "B", "F", "L", "U"];
-//     const testSpacecraft = new spacecraft(4, 9, 1, "W");
-//     commands.forEach((command) => testSpacecraft.navigate(command));
-//     validateCoordinatesAndDirection(testSpacecraft, 4, 9, 1, "U");
-//   });
+  //Test Case 3
+  test("Test case 3", () => {
+    const commands = ["D", "B", "F", "L", "U"];
+    const testSpacecraft = new spacecraft(4, 9, 1, "W");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 4, 9, 1, "U");
+  });
 
-//   //Test Case 4
-//   test("Test case 4", () => {
-//     const commands = ["U", "B", "B", "D", "R"];
-//     const testSpacecraft = new spacecraft(2, 5, 8, "E");
-//     commands.forEach((command) => testSpacecraft.navigate(command));
-//     validateCoordinatesAndDirection(testSpacecraft, 2, 5, 6, "N");
-//   });
+  //Test Case 4
+  test("Test case 4", () => {
+    const commands = ["U", "B", "B", "D", "R"];
+    const testSpacecraft = new spacecraft(2, 5, 8, "E");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 2, 5, 6, "N");
+  });
 
-//   //Test Case 5
-//   test("Test case 4", () => {
-//     const commands = ["L", "F", "D", "F", "L"];
-//     const testSpacecraft = new spacecraft(2, -3, -5, "S");
-//     commands.forEach((command) => testSpacecraft.navigate(command));
-//     validateCoordinatesAndDirection(testSpacecraft, 3, -3, -6, "S");
-//   });
-// });
+  //Test Case 5
+  test("Test case 4", () => {
+    const commands = ["L", "F", "D", "F", "L"];
+    const testSpacecraft = new spacecraft(2, -3, -5, "S");
+    commands.forEach((command) => testSpacecraft.navigate(command));
+    validateCoordinatesAndDirection(testSpacecraft, 3, -3, -6, "S");
+  });
+});
 
 // // Test 7 for bounding values
 // describe("Boundary value check", () => {
