@@ -7,12 +7,11 @@ const spacecraft = require("./navigate");
     ->Define a spacecraft with initial values and check for undefined(falsy) values.
 */
 describe("Defination and type of spacecraft ", () => {
- 
-    const tempSpacecraft = new spacecraft;
+  const tempSpacecraft = new spacecraft();
 
-  test("Check for objetc(Instance of class)",()=>{
+  test("Check for objetc(Instance of class)", () => {
     expect(tempSpacecraft).toBeInstanceOf(spacecraft);
-  })
+  });
 
   test("All spacecraft values are undefined at first", () => {
     expect(tempSpacecraft.x).toBeFalsy();
@@ -21,7 +20,7 @@ describe("Defination and type of spacecraft ", () => {
     expect(tempSpacecraft.dir).toBeFalsy();
   });
 });
- 
+
 //Creating function that initialize a spacecraft and navigate through given commands
 function initializeAndNavigate(x, y, z, dir, cmd) {
   const testSpacecraft = new spacecraft(x, y, z, dir);
@@ -29,13 +28,12 @@ function initializeAndNavigate(x, y, z, dir, cmd) {
   return testSpacecraft;
 }
 
- 
 function validateCoordinatesAndDirection(testSpacecraft, x, y, z, dir) {
   expect(testSpacecraft.x).toBe(x);
   expect(testSpacecraft.y).toBe(y);
   expect(testSpacecraft.z).toBe(z);
   expect(testSpacecraft.dir).toBe(dir);
-} 
+}
 
 /*
     Test-2
@@ -65,7 +63,7 @@ describe("All coordinates are initialize with all possible direction", () => {
   test("Initialize with W direction", () => {
     const testSpacecraft = initializeAndNavigate(0, 2, 1, "W");
     validateCoordinatesAndDirection(testSpacecraft, 0, 2, 1, "W");
-  }); 
+  });
 
   test("Initialize with U direction", () => {
     const testSpacecraft = initializeAndNavigate(3, 2, 1, "U");
@@ -331,12 +329,45 @@ describe("Test with Different test-cases", () => {
   });
 });
 
-
 // Test 7 for bounding values
-describe('Boundary value check', () => {
+describe("Boundary value check", () => {
+  test("Spacecraft must be in boundary", () => {
+    expect(() => new spacecraft(11, 2, 1, "N")).toThrow("Boundary Error");
+  });
 
-  test('Spacecraft must be in boundary', () => { 
-    expect(() => new spacecraft(11,2,1,"N")).toThrow("Boundary Error");
+  test("Spacecraft must be navigates in boundary", () => {
+    expect(() => initializeAndNavigate(10, 1, 3, "E", "F")).toThrow(
+      "Boundary Error"
+    );
+  });
+
+  test("Spacecraft must be navigates in boundary", () => {
+    expect(() => initializeAndNavigate(7, -10, 8, "N", "B")).toThrow(
+      "Boundary Error"
+    );
+  });
+
+  test("Spacecraft must be navigates in boundary", () => {
+    expect(() => initializeAndNavigate(-10, 10, 10, "E", "B")).toThrow(
+      "Boundary Error"
+    );
+  });
+
+  test("Spacecraft must be navigates in boundary", () => {
+    const commands = ["L", "F", "D", "F", "L"];
+    const testSpacecraft = new spacecraft(2, -3, -10, "S");
+
+    expect(() =>
+      commands.forEach((command) => testSpacecraft.navigate(command))
+    ).toThrow("Boundary Error");
+  });
+
+  test("Spacecraft must be navigates in boundary", () => {
+      const commands = ["F","F", "R", "U", "B", "L"];
+      const testSpacecraft = new spacecraft(2, 9, 3, "N");
+    expect(() =>
+    commands.forEach((command) => testSpacecraft.navigate(command))
+    ).toThrow("Boundary Error");
+  });
   
-   })
 });
