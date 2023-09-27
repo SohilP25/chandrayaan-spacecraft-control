@@ -13,10 +13,8 @@ class spacecraft {
       this.y = parseInt(y);
       this.z = parseInt(z);
       this.dir = dir;
-      this.allDirection = ["N", "E", "S", "W"];
     }
-
-
+    allDirection = ["N", "E", "S", "W"];
     /*
     ->move() : Spacecraft function move for move forward or move backward
     ->forward/backward depends on a value of add which calculated according to directions
@@ -77,7 +75,6 @@ class spacecraft {
     ->L = Rotate to the left side & R = Rotate to the right side
     */
       navigate(command) {
-        // console.log(`dir is ${this.dir}, and (${this.x},${this.y},${this.z})`);
           switch (command) {
             case "F":
               this.move(1);
