@@ -143,144 +143,144 @@ describe("Move Forward/Backward differnt direction and positions test", () => {
   });
 });
 
-// /*
-//     Test-4
-//     ->Spacecraft must be turn left and right in any direction.
-//     -> value 1 for left & -1 for right.
-//     ->Spacecraft turn in any direction
-// */
-// describe("Turn Left/Right differnt direction and positions test", () => {
-//   //In North direction
-//   test("Turn Left in N direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "L");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "W");
-//   });
-//   test("Turn Right in N direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "R");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "E");
-//   });
+/*
+    Test-4
+    ->Spacecraft must be turn left and right in any direction.
+    -> value 1 for left & -1 for right.
+    ->Spacecraft turn in any direction
+*/
+describe("Turn Left/Right differnt direction and positions test", () => {
+  //In North direction
+  test("Turn Left in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "W");
+  });
+  test("Turn Right in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "E");
+  });
 
-//   //In South direction
-//   test("Turn Left in S direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "L");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "E");
-//   });
-//   test("Turn Right in S direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "R");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "W");
-//   });
+  //In South direction
+  test("Turn Left in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "E");
+  });
+  test("Turn Right in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "W");
+  });
 
-//   //In East direction/
-//   test("Turn Left in E direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "L");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
-//   });
-//   test("Turn Right in E direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "R");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
-//   });
+  //In East direction/
+  test("Turn Left in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
+  test("Turn Right in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
 
-//   //  In West direction
-//   test("Turn Left in W direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "L");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
-//   });
-//   test("Turn Right in W direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "R");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
-//   });
+  //  In West direction
+  test("Turn Left in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
+  test("Turn Right in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
 
-//   //In Up direction
-//   test("Turn Left in U direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "L");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
-//   });
-//   test("Turn Right in U direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "R");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
-//   });
+  //In Up direction
+  test("Turn Left in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
+  test("Turn Right in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
 
-//   //In Down direction
-//   test("Turn Left in D direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "L");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
-//   });
+  //In Down direction
+  test("Turn Left in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "L");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "S");
+  });
 
-//   test("Turn Right in D direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "R");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
-//   });
-// });
+  test("Turn Right in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "R");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "N");
+  });
+});
 
-// /*
-//     Test-5
-//     ->Spacecraft must be turn Up and Down.
-//     ->Spacecraft turn in any direction.
-//     ->commang in navigate() : U for Up & D for Down
-//     ->Also test a navigation function
-// */
-// describe("Turn Up/Down differnt direction and positions test", () => {
-//   //In North direction
-//   test("Turn Up in N direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "U");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
-//   });
-//   test("Turn Down in N direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "D");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
-//   });
+/*
+    Test-5
+    ->Spacecraft must be turn Up and Down.
+    ->Spacecraft turn in any direction.
+    ->commang in navigate() : U for Up & D for Down
+    ->Also test a navigation function
+*/
+describe("Turn Up/Down differnt direction and positions test", () => {
+  //In North direction
+  test("Turn Up in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in N direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "N", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 
-//   //In South direction
-//   test("Turn Up in S direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "U");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
-//   });
-//   test("Turn Down in S direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "D");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
-//   });
+  //In South direction
+  test("Turn Up in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in S direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "S", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 
-//   //In East direction/
-//   test("Turn Up in E direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "U");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
-//   });
-//   test("Turn Down in E direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "D");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
-//   });
+  //In East direction/
+  test("Turn Up in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in E direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "E", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 
-//   //  In West direction
-//   test("Turn Up in W direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "U");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
-//   });
-//   test("Turn Down in W direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "D");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
-//   });
+  //  In West direction
+  test("Turn Up in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in W direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "W", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 
-//   //In Up direction
-//   test("Turn Up in U direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "U");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
-//   });
-//   test("Turn Down in U direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "D");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
-//   });
+  //In Up direction
+  test("Turn Up in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
+  test("Turn Down in U direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "U", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
 
-//   //In Down direction
-//   test("Turn Up in D direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "U");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
-//   });
+  //In Down direction
+  test("Turn Up in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "U");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "U");
+  });
 
-//   test("Turn Down in D direction", () => {
-//     const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "D");
-//     validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
-//   });
-// });
+  test("Turn Down in D direction", () => {
+    const testSpacecraft = initializeAndNavigate(0, 0, 0, "D", "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 0, 0, "D");
+  });
+});
 
 // /*
 //     Test-6
