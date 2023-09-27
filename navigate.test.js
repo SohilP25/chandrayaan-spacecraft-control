@@ -63,18 +63,18 @@ describe("All coordinates are initialize with all possible direction", () => {
   });
 
   test("Initialize with W direction", () => {
-    const testSpacecraft = initializeAndNavigate(0, 22, 1, "W");
-    validateCoordinatesAndDirection(testSpacecraft, 0, 22, 1, "W");
-  });
+    const testSpacecraft = initializeAndNavigate(0, 2, 1, "W");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 2, 1, "W");
+  }); 
 
   test("Initialize with U direction", () => {
-    const testSpacecraft = initializeAndNavigate(31, 32, 1, "U");
-    validateCoordinatesAndDirection(testSpacecraft, 31, 32, 1, "U");
+    const testSpacecraft = initializeAndNavigate(3, 2, 1, "U");
+    validateCoordinatesAndDirection(testSpacecraft, 3, 2, 1, "U");
   });
 
   test("Initialize with D direction", () => {
-    const testSpacecraft = initializeAndNavigate(0, 13, 61, "D");
-    validateCoordinatesAndDirection(testSpacecraft, 0, 13, 61, "D");
+    const testSpacecraft = initializeAndNavigate(0, 10, 6, "D");
+    validateCoordinatesAndDirection(testSpacecraft, 0, 10, 6, "D");
   });
 });
 
@@ -329,4 +329,14 @@ describe("Test with Different test-cases", () => {
     commands.forEach((command) => testSpacecraft.navigate(command));
     validateCoordinatesAndDirection(testSpacecraft, 3, -3, -6, "S");
   });
+});
+
+
+// Test 7 for bounding values
+describe('Boundary value check', () => {
+
+  test('Spacecraft must be in boundary', () => { 
+    expect(() => new spacecraft(11,2,1,"N")).toThrow("Boundary Error");
+  
+   })
 });
