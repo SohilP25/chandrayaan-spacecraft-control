@@ -1,5 +1,5 @@
 # chandrayan-spacecraft-control
-  - This is a simple project in JavaScript and Jest for testing to control your spacecraft by providing intitial coordinates and direction.
+  - This is a simple project in Typescript and Jest for testing to control your spacecraft by providing intitial coordinates and direction.
   - You can give commands to control and derives output coordinate after executing commands.
 
 ## Table of Contents
@@ -19,7 +19,10 @@ Follow the steps to run a program on your local machine for development and test
 ## Prerequisites
 
 - Node.js & NPM installed on your computer. You can download it from [nodejs.org](https://nodejs.org/).
-
+- Typescript(Already added in package.json if not workind add externally)
+  ```
+    npm install -g typescript
+    ```
 
 ## Installation
 
@@ -45,8 +48,9 @@ Follow the steps to run a program on your local machine for development and test
 1. Open Terminal
 
 2. Execute program:
-    ```
-    node index.js
+   ```
+    npm build
+    npm start
     ```
 
 2. Follow the prompts displayed in terminal and set the spacecraft's initial direction and initial coordinate.
@@ -68,5 +72,5 @@ To test the program, run these command :
 
   - [Node.js](https://nodejs.org/)
   - Jest - Testing framework
-
+  - Typescript
 
